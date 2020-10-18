@@ -1,6 +1,7 @@
 // Dentro do product estão os schemas desse models: que são campos que
 //um produto pode ter e quais são os valores que vão salvar
 const mongoose = require('mongoose');
+const mongoosePaginate = require('mongoose-paginate');
 
 const ProductSchema = new mongoose.Schema({
   title: {
@@ -21,6 +22,8 @@ const ProductSchema = new mongoose.Schema({
     default: Date.now,
   },
 });
+
+ProductSchema.plugin(mongoosePaginate);
 
 //registrar um model na aplicação
 mongoose.model('Product', ProductSchema);
